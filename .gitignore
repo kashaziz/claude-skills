@@ -1,0 +1,24 @@
+# Distribution packages
+dist/
+*.zip
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
+
+# Other files
+CLAUDE.md
