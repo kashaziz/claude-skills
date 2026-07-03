@@ -10,6 +10,12 @@ Collection of production-ready Claude skills.
 - **Version:** 1.0.0
 - **Author:** Kashif Aziz
 
+### Xquik X Data API
+- **Location:** `skills/xquik-x-data-api/`
+- **Documentation:** [SKILL](skills/xquik-x-data-api/SKILL.md)
+- **Version:** 1.0.0
+- **Author:** Community
+
 ## Packaging
 
 Before installing a skill, you may need to package it into a distributable format. The packaging script creates a ZIP file containing all skill files, which is required for Claude Desktop installation.
@@ -56,4 +62,3 @@ Or manually copy the skill folder to your Claude Code skills directory.
 ## License
 
 See [LICENSE](LICENSE) file.
-
