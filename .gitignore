@@ -22,3 +22,7 @@ Thumbs.db
 
 # Other files
 CLAUDE.md
+
+# social-cards: Mixkit tracks may not be redistributed (re-downloaded on use); config.json has machine paths
+skills/social-cards/music/*.mp3
+skills/social-cards/config.json

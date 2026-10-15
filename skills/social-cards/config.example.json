@@ -1,0 +1,7 @@
+{
+  "tts": {
+    "default": "edge",
+    "edge":   { "python": "/home/kashif/.pyenv/versions/3.11.9/bin/python", "voice": "en-GB-RyanNeural", "rate": "+3%" },
+    "kokoro": { "python": "/home/kashif/.venvs/kokoro/bin/python", "voice": "am_michael", "rate": "1.05" }
+  }
+}

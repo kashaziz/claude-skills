@@ -1,0 +1,20 @@
+{
+  "name": "LucidReactor Labs",
+  "site": "lucidreactor.com",
+  "logo": "../../lucidreactor-linkedin-logo.svg",
+  "fonts": {
+    "display": { "family": "Fraunces", "file": "../../../../fonts/fraunces-latin.woff2", "weight": "400 600" },
+    "body": { "family": "Inter", "file": "../../../../fonts/inter-latin.woff2", "weight": "400 600" },
+    "mono": { "family": "JetBrains Mono", "file": "../../../../fonts/jetbrains-mono-latin.woff2", "weight": "400 500" }
+  },
+  "colors": {
+    "ink": "#15171C",
+    "raised": "#1F2229",
+    "accent": "#B5481A",
+    "accentFg": "#F5F3EE",
+    "accentOnInk": "#D9683A",
+    "paper": "#F5F3EE",
+    "muted": "#9A9DA4",
+    "line": "#D6D2C8"
+  }
+}

@@ -1,0 +1,131 @@
+[
+  {
+    "id": "01-ocr-on-the-device",
+    "layout": "fact-table",
+    "theme": "dark",
+    "label": "Product engineering",
+    "image": "../../../insights/ocr-on-the-device-hero.webp",
+    "headline": "Why we run OCR on the phone, not on a server",
+    "body": "The photo never leaves the device. No upload, no queue, no OCR server to pay for.",
+    "rows": [
+      {
+        "label": "Scan time",
+        "value": "30–60 s",
+        "was": "80–240 s"
+      },
+      {
+        "label": "Main bundle",
+        "value": "200 KB",
+        "was": "677 KB"
+      },
+      {
+        "label": "Photos uploaded",
+        "value": "None"
+      }
+    ],
+    "source": "lucidreactor.com/insights",
+    "cta": "Read the article →"
+  },
+  {
+    "id": "02-public-data-checklist",
+    "layout": "checklist",
+    "theme": "paper",
+    "label": "Data products",
+    "headline": "Public data as a product: the checklist",
+    "checks": [
+      {
+        "text": "Pick one domain and one source family"
+      },
+      {
+        "text": "Snapshot every source, then diff"
+      },
+      {
+        "text": "Link records into entities people recognise"
+      },
+      {
+        "text": "Score with inputs the user can see"
+      },
+      {
+        "text": "Keep facts and inference apart"
+      },
+      {
+        "text": "Price the saved work, not the free input"
+      }
+    ],
+    "source": "lucidreactor.com/insights",
+    "cta": "Read the checklist →",
+    "image": "../../../insights/public-data-as-a-product-hero.webp"
+  },
+  {
+    "id": "03-audit-verdicts",
+    "layout": "chip-grid",
+    "theme": "accent",
+    "label": "Product engineering",
+    "headline": "Every part of a product gets one verdict.",
+    "body": "A product audit is not a list of complaints. It decides what to keep, what to fix and what to replace.",
+    "chips": {
+      "items": [
+        [
+          "Repair",
+          "The design is sound. Fix the local problems and keep shipping."
+        ],
+        [
+          "Refactor",
+          "The design is under strain. Change the structure in steps, behind tests."
+        ],
+        [
+          "Rebuild",
+          "Only the part that cannot support what the product now has to do."
+        ],
+        [
+          "Remove",
+          "Complex and unused. Often the best verdict."
+        ]
+      ],
+      "highlight": 3
+    },
+    "source": "lucidreactor.com/insights",
+    "cta": "Read the article →"
+  },
+  {
+    "id": "04-privacy-quote",
+    "layout": "quote",
+    "theme": "dark",
+    "label": "Product engineering",
+    "quote": {
+      "text": "If the data never leaves the device, you do not need to ask people to trust you with it.",
+      "speaker": "LucidReactor Labs",
+      "context": "Privacy-first architecture for consumer apps, in plain language"
+    },
+    "source": "lucidreactor.com/insights",
+    "cta": "Read the article →",
+    "image": "../../../insights/privacy-first-architecture-for-consumer-apps-hero.webp"
+  },
+  {
+    "id": "05-four-decisions",
+    "layout": "steps",
+    "theme": "paper",
+    "label": "How we work",
+    "headline": "Four decisions, in the right order.",
+    "steps": [
+      {
+        "title": "Frame the problem",
+        "text": "One user, one important decision and the evidence that would show progress."
+      },
+      {
+        "title": "Prototype the decision",
+        "text": "Make the core journey visible early enough to test the reasoning, not just the interface."
+      },
+      {
+        "title": "Build the smallest complete product",
+        "text": "A narrow end-to-end experience with the trust, recovery and measurement it needs."
+      },
+      {
+        "title": "Launch, measure and improve",
+        "text": "Real behaviour and direct feedback choose the next problem."
+      }
+    ],
+    "source": "lucidreactor.com/services",
+    "cta": "See our services →"
+  }
+]

@@ -1,0 +1,80 @@
+/* Reel motion (9:16 video). Ported from the storyboard project's ReelStage.astro and formats.css.
+   Every scene is a .frame stacked in the stage; render-reel.mjs turns one on at a time and seeks
+   every CSS animation inside it to the same instant, so a frame is identical whenever it is rendered.
+   Rules: CSS animations only, no timers. --dur is the scene length. */
+.stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--p-ink); }
+.frame { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+.frame.on { opacity: 1; visibility: visible; }
+
+.progress { position: absolute; top: 28px; left: 36px; right: 36px; z-index: 5; display: flex; gap: 8px; }
+.seg { flex: 1; height: 6px; border-radius: 99px; background: rgba(255,255,255,.28); overflow: hidden; }
+.seg i { display: block; height: 100%; width: 0; background: var(--p-paper); }
+.frame .scene-top { padding-top: 7cqw; }
+.frame .has-band .scene-top { padding-top: 7cqw; }
+.mode-reel .scene-main { justify-content: center; }
+.mode-reel:is(.layout-hook, .layout-cta):has(.photo-bg) .scene-main { justify-content: flex-end; padding-bottom: 10cqw; }
+.mode-reel .band { --band-h: 60cqw; }
+.mode-reel .h { font-size: calc(7.6cqw * var(--k)); }
+.mode-reel .hook { font-size: calc(10.5cqw * var(--k)); }
+
+/* Entry motion. Each .a-N class starts later than the one before (stagger). */
+.frame .a-1, .frame .a-2, .frame .a-3, .frame .a-4 { opacity: 0; transform: translateY(40px); }
+.frame.on .a-1 { animation: rise .5s cubic-bezier(.2,.7,.2,1) 0s both; }
+.frame.on .a-2 { animation: rise .6s cubic-bezier(.2,.7,.2,1) .25s both; }
+.frame.on .a-3 { animation: rise .6s cubic-bezier(.2,.7,.2,1) .55s both; }
+.frame.on .a-4 { animation: rise .6s cubic-bezier(.2,.7,.2,1) .85s both; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > * { opacity: 0; animation: rise .45s cubic-bezier(.2,.7,.2,1) both; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > :nth-child(1) { animation-delay: 1.0s; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > :nth-child(2) { animation-delay: 1.3s; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > :nth-child(3) { animation-delay: 1.6s; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > :nth-child(4) { animation-delay: 1.9s; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > :nth-child(5) { animation-delay: 2.2s; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > :nth-child(6) { animation-delay: 2.5s; }
+.frame.on :is(.rows, .chips, .steps, .checks, .bullets) > :nth-child(n+7) { animation-delay: 2.8s; }
+.frame.on .checks > * { animation-name: tick; }
+.frame.on .chip.hi { animation: rise .45s cubic-bezier(.2,.7,.2,1) both, pulse .5s ease both; animation-delay: inherit, 2.6s; }
+
+/* Words of a hook or a quote come in one by one; the block itself does not rise. */
+.frame.on :is(.hook, .quote).a-2 { animation: none; opacity: 1; transform: none; }
+.frame.on :is(.hook, .quote) .w { display: inline-block; opacity: 0; animation: word .5s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(.3s + var(--w) * .09s); }
+.frame.on .quote .w { animation-delay: calc(.5s + var(--w) * .09s); }
+
+/* Pictures drift slowly (Ken Burns); scenes fade in; the call to action pulses at the end. */
+.frame.on .photo-bg { opacity: 1; animation: fade .6s ease both; }
+.frame.on :is(.photo-bg, .band) img { animation: kenburns var(--dur, 5s) linear both; }
+.frame.on .scene { animation: fade .3s ease both; }
+.frame.on .layout-cta .cta-btn { animation: rise .6s cubic-bezier(.2,.7,.2,1) .85s both, cta-pulse 1.2s ease-in-out 1.6s infinite; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes tick { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: none; } }
+@keyframes word { from { opacity: 0; filter: blur(10px); transform: translateY(.15em); } to { opacity: 1; filter: blur(0); transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }
+@keyframes pulse { from { transform: scale(1); } 50% { transform: scale(1.06); } to { transform: scale(1); } }
+@keyframes cta-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+
+/* Captions: the spoken line, word by word, in the lower third. The word being said lights up. */
+.cap { position: absolute; left: 6cqw; right: 6cqw; bottom: 17cqw; z-index: 3; margin: 0; text-align: center; font: 600 4.8cqw/1.5 var(--font-body); text-wrap: balance; }
+.cap:empty { display: none; }
+.cw { background: var(--p-ink); color: var(--p-paper); padding: .1em .32em; border-radius: .18em; box-decoration-break: clone; -webkit-box-decoration-break: clone; opacity: .55; }
+.cw.on { opacity: 1; }
+.cw.on:last-child, .cw.on:has(+ .cw:not(.on)) { background: var(--p-accent); color: var(--p-accent-fg); }
+.theme-paper .cw { background: var(--p-ink); }
+.has-cap .scene-main { padding-bottom: 24cqw; }
+.has-cap .scene-foot { opacity: .85; }
+.mode-reel.has-cap:is(.layout-hook, .layout-cta):has(.photo-bg) .scene-main, .mode-reel.has-cap:is(.layout-hook, .layout-cta) .scene-main { padding-bottom: 27cqw; }
+.theme-accent .cw.on:last-child, .theme-accent .cw.on:has(+ .cw:not(.on)) { background: var(--p-paper); color: var(--p-ink); }
+
+/* Clips: a cut of a video. Full bleed behind the headline (layout clip / hook), or as the top band.
+   The frame image is swapped per rendered frame by the seek script; no Ken Burns on a clip. */
+.clip-bg { position: absolute; inset: 0; z-index: 0; background: #000; }
+.clip-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.clip-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.1) 28%, rgba(0,0,0,0) 60%, rgba(0,0,0,.45) 100%); }
+.scene:has(.clip-bg) { color: var(--p-paper); --fg: var(--p-paper); --mute: var(--p-muted); --hi: var(--p-accent-on-ink); }
+.scene:has(.clip-bg) .scene-main { justify-content: flex-start; padding-top: 6cqw; }
+.scene:has(.clip-bg) :is(.h, .hook) { text-shadow: 0 2px 16px rgba(0,0,0,.5); }
+.layout-clip .h { font-size: calc(7cqw * var(--k)); }
+.frame.on .clip-bg { opacity: 1; animation: fade .4s ease both; }
+.frame.on .band-clip img { animation: none; }
+.clip-bg::after { background: linear-gradient(180deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.25) 22%, rgba(0,0,0,0) 45%, rgba(0,0,0,.45) 100%); }
+.band-clip::after { background: linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 85%, var(--band-fade, transparent) 100%); }

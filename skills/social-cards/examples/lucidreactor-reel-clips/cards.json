@@ -1,0 +1,51 @@
+[
+  {
+    "id": "1-hook",
+    "layout": "hook",
+    "theme": "dark",
+    "label": "Product engineering",
+    "image": "../../../insights/ocr-on-the-device-hero.webp",
+    "headline": "Why we run OCR on the phone, not on a server.",
+    "voice": "Why we run OCR on the phone, not on a server. Shoppers did not want to upload photos of everyday products. So the photo never leaves the device.",
+    "source": "lucidreactor.com/insights",
+    "reelCta": ""
+  },
+  {
+    "id": "2-scan-demo",
+    "layout": "clip",
+    "theme": "dark",
+    "label": "Halal Code Check",
+    "clip": { "file": "../clips/halalcodecheck-multi-scan.mp4", "start": 9.3, "duration": 9.5, "sound": true },
+    "headline": "The label is read on the phone.",
+    "source": "halalcodecheck.com",
+    "reelCta": ""
+  },
+  {
+    "id": "3-numbers",
+    "layout": "fact-table",
+    "theme": "paper",
+    "label": "Product engineering",
+    "clip": { "file": "../clips/halalcodecheck-multi-scan.mp4", "start": 19, "duration": 6, "sound": false },
+    "headline": "Slower than a server. Fast enough for an aisle.",
+    "rows": [
+      { "label": "Scan time", "value": "30–60 s", "was": "80–240 s" },
+      { "label": "Main bundle", "value": "200 KB", "was": "677 KB" },
+      { "label": "Photos uploaded", "value": "None" }
+    ],
+    "voice": "On-device OCR is slower than a cloud service. Multi-pass recognition, early exit and compression brought a scan down from minutes to under a minute. That is inside the time a shopper spends in an aisle.",
+    "source": "lucidreactor.com/insights",
+    "reelCta": ""
+  },
+  {
+    "id": "4-cta",
+    "layout": "cta",
+    "theme": "accent",
+    "label": "Product engineering",
+    "headline": "Privacy can be an architecture choice, not a policy page.",
+    "body": "If the data never leaves the phone, you do not need to ask people to trust you with it.",
+    "button": "Read the full article →",
+    "voice": "Privacy can be an architecture choice, not a policy page. Read the full article on lucid reactor dot com.",
+    "source": "lucidreactor.com/insights/ocr-on-the-device",
+    "cta": ""
+  }
+]

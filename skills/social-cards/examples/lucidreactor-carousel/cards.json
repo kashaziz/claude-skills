@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1-hook",
+    "layout": "hook",
+    "theme": "dark",
+    "label": "Product strategy",
+    "image": "../../../insights/scope-an-mvp-for-one-user-hero.webp",
+    "imageMode": "cover",
+    "eyebrow": "1 / 3",
+    "headline": "A first release should answer one question for one person.",
+    "body": "How we scope an MVP so one real user can test it.",
+    "source": "lucidreactor.com/insights",
+    "cta": "Swipe →",
+    "voice": "A first release should answer one question for one person. Here is how we scope an MVP so one real user can test it.",
+    "reelCta": "Keep watching →"
+  },
+  {
+    "id": "2-scope-ladder",
+    "layout": "steps",
+    "theme": "paper",
+    "label": "Product strategy",
+    "eyebrow": "2 / 3",
+    "headline": "Use a scope ladder.",
+    "body": "Cut scope without cutting the product's reason to exist.",
+    "steps": [
+      {
+        "title": "Decision minimum",
+        "text": "The smallest path that produces a useful answer or output."
+      },
+      {
+        "title": "Trust minimum",
+        "text": "Sources, limits, error states and feedback required for someone to rely on it."
+      },
+      {
+        "title": "Learning minimum",
+        "text": "Events and prompts required to understand what happened after launch."
+      }
+    ],
+    "source": "lucidreactor.com/insights",
+    "cta": "Swipe →",
+    "voice": "Use a scope ladder. First, the decision minimum: the smallest path that gives a useful answer. Then the trust minimum: sources, limits and feedback, so someone can rely on it. Then the learning minimum: the events you need to understand what happened after launch.",
+    "reelCta": ""
+  },
+  {
+    "id": "3-cta",
+    "layout": "cta",
+    "theme": "accent",
+    "label": "Product strategy",
+    "eyebrow": "3 / 3",
+    "headline": "Write the test before the build.",
+    "body": "Who will use it, what they will try to do, what result counts as success, and what you will measure to see it.",
+    "button": "Read the full article →",
+    "source": "lucidreactor.com/insights/scope-an-mvp-for-one-user",
+    "cta": "",
+    "voice": "Write the test before the build. Who will use it, what they will try to do, and what result counts as success. The full article is on lucidreactor dot com.",
+    "tts": "Write the test before the build. Who will use it, what they will try to do, and what result counts as success. The full article is on lucid reactor dot com."
+  }
+]
