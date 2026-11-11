@@ -118,7 +118,7 @@
    The pill and brand mark sit over the picture. */
 .band { position: relative; z-index: 0; flex: none; height: var(--band-h, 52.5cqw); background: var(--p-ink); }
 .band img { width: 100%; height: 100%; object-fit: cover; object-position: var(--band-focus, 50% 50%); display: block; }
-.band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0) 85%, var(--band-fade, transparent) 100%); }
+.band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0) 85%, var(--band-fade, transparent) 100%); }
 .has-band .scene-top { position: absolute; left: 0; right: 0; top: 0; z-index: 2; color: var(--p-paper); --fg: var(--p-paper); }
 .has-band .scene-top .pill, .has-band .scene-top .brand-name { color: var(--p-paper); }
 .has-band .scene-top .pill .dot { background: var(--p-accent-on-ink); }
@@ -130,3 +130,30 @@
 .has-band .checks { gap: 2.2cqw; margin-top: 4cqw; }
 .has-band .check-text { font-size: calc(3.4cqw * var(--k)); }
 .has-band .check { grid-template-columns: 6cqw 1fr; } .has-band .mark { width: 6cqw; height: 6cqw; font-size: calc(3cqw * var(--k)); }
+
+/* quiz: four answers A-D and an ask line (EMA social styles, 2026-11-10) */
+.quiz { list-style: none; padding: 0; margin: 5cqw 0 0; display: grid; gap: 2.4cqw; }
+.opt { display: grid; grid-template-columns: 8cqw 1fr; gap: 3cqw; align-items: center; padding: 2.6cqw 3.4cqw; border-radius: 99px; background: var(--tile); box-shadow: inset 0 0 0 .25cqw var(--line); }
+.opt .letter { width: 8cqw; height: 8cqw; border-radius: 50%; display: grid; place-items: center; background: var(--hi); color: var(--p-ink); font: 700 calc(3.6cqw * var(--k))/1 var(--font-body); }
+.theme-paper .opt .letter { color: var(--p-paper); }
+.opt-text { font-size: calc(4cqw * var(--k)); font-weight: 600; line-height: 1.2; }
+.ask { margin: 4.5cqw 0 0; font-family: var(--font-display); font-size: calc(4.2cqw * var(--k)); color: var(--hi); font-style: italic; }
+.has-band .opt { padding: 2cqw 3cqw; } .has-band .opt .letter { width: 7cqw; height: 7cqw; } .has-band .opt-text { font-size: calc(3.6cqw * var(--k)); }
+
+/* spec: icon rows (label left, value right) under the machine's name */
+.specs { list-style: none; padding: 0; margin: 4.5cqw 0 0; border-top: 1px solid var(--line); }
+.spec-row { display: grid; grid-template-columns: 7cqw 1fr auto; gap: 3cqw; align-items: center; padding: 2.4cqw 0; border-bottom: 1px solid var(--line); }
+.spec-row .ic { width: 6.4cqw; height: 6.4cqw; color: var(--hi); }
+.spec-row .sl { font-family: var(--font-mono); font-size: calc(2.5cqw * var(--k)); letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+.spec-row .sv { font-size: calc(3.8cqw * var(--k)); font-weight: 600; text-align: right; }
+.has-band .spec-row { padding: 2cqw 0; }
+/* spec card: the whole machine, not cropped, below the pill and brand mark */
+/* The machine photo sits in a framed, rounded panel (like a print on the card), so a product shot on
+   white and a lifestyle photo both look intended (a white shot on a dark card looked pasted, 11 Nov). */
+.layout-spec .band { background: transparent; display: flex; align-items: flex-end; justify-content: center; padding: 15cqw 7cqw 0; box-sizing: border-box; }
+.layout-spec .band img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; border-radius: 2.4cqw; padding: 1.6cqw; box-sizing: border-box; box-shadow: 0 1.2cqw 4cqw rgba(0,0,0,.25); }
+.layout-spec .band::after { background: none; }
+/* spec rows: the label keeps its width (it wrapped to three lines next to a long value) and the value wraps */
+.spec-row { grid-template-columns: 7cqw max-content 1fr; }
+.spec-row .sl { white-space: nowrap; }
+.spec-row .sv { text-wrap: balance; }

@@ -69,6 +69,8 @@ Needs: Node 22+, Google Chrome or Chromium on PATH (or `CHROME=/path`), ffmpeg. 
    | `hook` | – | big opening line (first card of a carousel) |
    | `photo` | `image` | headline over a full-bleed photo |
    | `cta` | `button` | last card of a carousel |
+   | `quiz` | `options: [4 strings]`, `ask` | a four-answer quiz (A-D) with a photo band; put the answer in the caption, not on the card |
+   | `spec` | `specs: [{icon, label, value}]` (4-5), `eyebrow` = the verdict label | a machine or product in a framed photo with icon spec rows; icons: pressure, heat, grinder, portafilter, milk, tank, size, gauge, power, check |
 
 4. **Render.**
 

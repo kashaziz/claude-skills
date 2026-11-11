@@ -12,7 +12,7 @@ const isNum = (v) => v.length <= 9 && /^[$€£]?[0-9]/.test(v);
 const words = (text) => String(text ?? '').split(/\s+/).filter(Boolean).map((w, i) => `<span class="w" style="--w:${i}">${esc(w)}</span>`).join(' ');
 
 /** Seconds a reel scene stays on screen when the card does not say. */
-export const DEFAULT_SECONDS = { hook: 3.5, photo: 3.5, clip: 5, cta: 3.5, quote: 4.5, 'big-stat': 4.5, 'fact-table': 5, summary: 5, takeaway: 5, checklist: 5.5, 'chip-grid': 5.5, steps: 6 };
+export const DEFAULT_SECONDS = { hook: 3.5, photo: 3.5, clip: 5, cta: 3.5, quote: 4.5, 'big-stat': 4.5, 'fact-table': 5, summary: 5, takeaway: 5, checklist: 5.5, 'chip-grid': 5.5, steps: 6, quiz: 6, spec: 5.5 };
 
 export function loadBrand(brandPath) {
   const brand = JSON.parse(readFileSync(brandPath, 'utf8'));
@@ -44,6 +44,21 @@ export function headCss(b, css) {
 --font-display:${b.display.family};--font-body:${b.body.family};--font-mono:${b.mono.family};}
 ${css}`;
 }
+
+// Line icons for spec rows (stroke = currentColor). Kept simple on purpose: one idea per icon.
+const ICONS = {
+  pressure: '<circle cx="12" cy="13" r="8"/><path d="M12 13l4-4M8 5.5 12 4l4 1.5"/>',
+  heat: '<path d="M12 3c2.5 3 4 5.2 4 8a4 4 0 1 1-8 0c0-1.6.6-2.8 1.6-4 .2 1.6 1 2.4 2 2.4 0-2.4-.3-4.4.4-6.4z"/>',
+  grinder: '<path d="M7 4h10l-2 6H9L7 4z"/><rect x="8" y="10" width="8" height="8" rx="1.5"/><path d="M10 21h4"/>',
+  portafilter: '<circle cx="9" cy="12" r="5"/><path d="M14 12h7"/>',
+  milk: '<path d="M8 3h8l-1 4 2 3v11H7V10l2-3-1-4z"/><path d="M7 13h10"/>',
+  tank: '<path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z"/>',
+  size: '<path d="M3 12h18M6 9l-3 3 3 3M18 9l3 3-3 3"/>',
+  gauge: '<circle cx="12" cy="12" r="9"/><path d="M12 12l5-3"/><circle cx="12" cy="12" r="1.2"/>',
+  power: '<path d="M13 2 5 14h6l-1 8 8-12h-6l1-8z"/>',
+  check: '<path d="M5 12l5 5 9-10"/>',
+};
+const icon = (name) => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.check}</svg>`;
 
 function bodyFor(s) {
   const h = s.headline ? `<h2 class="h a-2">${esc(s.headline)}</h2>` : '';
@@ -77,6 +92,12 @@ function bodyFor(s) {
       }).join('')}</ul>`;
     case 'photo': case 'clip':
       return `${eyebrow}${h}${lede}`;
+    // A quiz post: the question and four answers A-D, and a line that asks for a comment.
+    case 'quiz':
+      return `${eyebrow}${h}${lede}<ol class="quiz a-4">${(s.options || []).map((o, i) => `<li class="opt"><span class="letter">${'ABCD'[i] ?? i + 1}</span><span class="opt-text">${esc(o)}</span></li>`).join('')}</ol>${s.ask ? `<p class="ask a-4">${esc(s.ask)}</p>` : ''}`;
+    // A spec card: the machine's name and label, and 4-5 spec rows with line icons.
+    case 'spec':
+      return `${eyebrow}${h}${lede}<ul class="specs a-4">${(s.specs || []).map((x) => `<li class="spec-row">${icon(x.icon)}<span class="sl">${esc(x.label)}</span><span class="sv">${esc(x.value)}</span></li>`).join('')}</ul>`;
     case 'cta':
       return `${eyebrow}${h}${lede}<span class="cta-btn a-4">${esc(s.button ?? 'Read the full article →')}</span>`;
     default:
